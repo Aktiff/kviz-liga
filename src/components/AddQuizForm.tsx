@@ -121,7 +121,7 @@ export function AddQuizForm({ venueId, knownTeams, onAdded }: Props) {
       .filter(r => r.teamName.trim())
       .map((r, i) => ({ teamName: r.teamName.trim(), score: totals[i], rounds: r.rounds.map(parseNum) as [number,number,number,number] }));
     if (!results.length) return;
-    const res = await fetch("/liga/api/quizzes", {method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({venueId,date,results})});
+    const res = await fetch("/api/quizzes", {method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({venueId,date,results})});
     if (res.ok) {
       onAdded(await res.json());
       setDate(new Date().toISOString().split("T")[0]);
