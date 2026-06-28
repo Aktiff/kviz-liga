@@ -130,7 +130,7 @@ export function QuizDetail({ venue, quiz: initialQuiz, isAdmin }: Props) {
         score: totals[i],
         rounds: r.rounds.map(parseNum) as [number,number,number,number],
       }));
-    const res = await fetch(`/api/quizzes/${quiz.id}`, {
+    const res = await fetch(`/liga/api/quizzes/${quiz.id}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ date: editDate, results }),
@@ -140,8 +140,8 @@ export function QuizDetail({ venue, quiz: initialQuiz, isAdmin }: Props) {
 
   async function deleteQuiz() {
     if (!confirm("Naozaj odstrániť kvíz?")) return;
-    const res = await fetch(`/api/quizzes/${quiz.id}`, { method: "DELETE" });
-    if (res.ok) location.href = `/podnik/${venue.id}`;
+    const res = await fetch(`/liga/api/quizzes/${quiz.id}`, { method: "DELETE" });
+    if (res.ok) location.href = `/liga/podnik/${venue.id}`;
   }
 
   function onRoundChange(i: number, ri: number, val: string) {

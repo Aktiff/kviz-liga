@@ -27,7 +27,7 @@ export function HistoricalPointsForm({ venue, onSaved }: Props) {
         };
       }
     }
-    const res = await fetch(`/api/venues/${venue.id}`, {
+    const res = await fetch(`/liga/api/venues/${venue.id}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ historical }),

@@ -31,7 +31,7 @@ export function QuizPresentation({ quiz: initialQuiz, venueId, isAdmin }: Props)
     setLoading(teamName);
     const newResults = results.map(r => r.teamName === teamName ? { ...r, score: Math.round((r.score + 0.1) * 10) / 10 } : r);
     setResults(newResults);
-    await fetch("/api/quizzes/" + initialQuiz.id, { method: "PATCH", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ results: newResults }) });
+    await fetch("/liga/api/quizzes/" + initialQuiz.id, { method: "PATCH", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ results: newResults }) });
     setLoading(null);
   }
   const hasMore = revealed < groups.length;

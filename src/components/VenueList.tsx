@@ -10,7 +10,7 @@ export function VenueList({ venues: init, isAdmin }: { venues: Venue[]; isAdmin:
 
   async function add() {
     if (!name.trim()) return;
-    const res = await fetch("/api/venues", {
+    const res = await fetch("/liga/api/venues", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ name }),
@@ -23,7 +23,7 @@ export function VenueList({ venues: init, isAdmin }: { venues: Venue[]; isAdmin:
   }
 
   async function del(id: string) {
-    const res = await fetch(`/api/venues/${id}`, { method: "DELETE" });
+    const res = await fetch(`/liga/api/venues/${id}`, { method: "DELETE" });
     if (res.ok) {
       setVenues(p => p.filter(v => v.id !== id));
       setConfirmId(null);
