@@ -43,7 +43,7 @@ export function QuizPresentation({ quiz: initialQuiz, venueId, isAdmin }: Props)
   const prevPadV = totalTeams <= 5 ? "12px" : "8px";
   const colsRounds = showRounds ? "80px 1fr 110px 110px 110px 110px 120px 150px" + (isAdmin ? " 110px" : "") : "80px 1fr 150px" + (isAdmin ? " 110px" : "");
   function mkTd(isLatest: boolean, isWinner: boolean, extra: React.CSSProperties = {}): React.CSSProperties {
-    return { backgroundColor: isLatest ? (isWinner ? "rgba(255,191,11,0.08)" : "rgba(255,255,255,0.04)") : "rgba(255,255,255,0.02)", borderTop: isLatest ? (isWinner ? "2px solid #ffbf0b" : "1px solid rgba(255,255,255,0.18)") : "1px solid rgba(255,255,255,0.05)", borderBottom: isLatest ? (isWinner ? "2px solid #ffbf0b" : "1px solid rgba(255,255,255,0.18)") : "1px solid rgba(255,255,255,0.05)", padding: (isLatest ? latPadV : prevPadV) + " 14px", ...extra };
+    return { backgroundColor: isLatest ? (isWinner ? "rgba(255,191,11,0.08)" : "rgba(255,255,255,0.04)") : "rgba(255,255,255,0.02)", borderTop: isLatest ? (isWinner ? "2px solid #ffbf0b" : "1px solid rgba(255,255,255,0.18)") : "1px solid rgba(255,255,255,0.05)", borderBottom: isLatest ? (isWinner ? "2px solid #ffbf0b" : "1px solid rgba(255,255,255,0.18)") : "1px solid rgba(255,255,255,0.05)", padding: latPadV + " 14px", ...extra };
   }
   return (
     <div style={{ position: "fixed", top: 0, left: 0, width: "100vw", height: "100vh", backgroundColor: "#111", display: "flex", flexDirection: "column", zIndex: 9999, overflow: "hidden", fontFamily: "system-ui,sans-serif" }}>
@@ -83,7 +83,7 @@ export function QuizPresentation({ quiz: initialQuiz, venueId, isAdmin }: Props)
                     const origRoz = getOrigRoz(team.teamName);
                     const rozDisplay = bonus > 0 ? "+" + fmt(bonus) : (origRoz && origRoz > 0 ? "+" + origRoz : "–");
                     const teamPlace = group.place + ti;
-                    const sz = isLatest ? latSize : prevSize;
+                    const sz = latSize;
                     const td = mkTd(isLatest, isWinner);
                     const tdL = mkTd(isLatest, isWinner, { borderLeft: isLatest ? (isWinner ? "2px solid #ffbf0b" : "1px solid rgba(255,255,255,0.18)") : "1px solid rgba(255,255,255,0.05)", borderTopLeftRadius: "14px", borderBottomLeftRadius: "14px" });
                     const tdR = mkTd(isLatest, isWinner, { borderRight: isLatest ? (isWinner ? "2px solid #ffbf0b" : "1px solid rgba(255,255,255,0.18)") : "1px solid rgba(255,255,255,0.05)", borderTopRightRadius: !isAdmin ? "14px" : "0", borderBottomRightRadius: !isAdmin ? "14px" : "0", textAlign: "right" });
