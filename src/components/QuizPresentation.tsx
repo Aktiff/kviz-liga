@@ -43,10 +43,10 @@ export function QuizPresentation({ quiz: initialQuiz, venueId, isAdmin }: Props)
   const prevPadV = totalTeams <= 5 ? "12px" : "8px";
   const colsRounds = showRounds ? "80px 1fr 150px 150px 150px 150px 160px 170px" + (isAdmin ? " 120px" : "") : "80px 1fr 170px" + (isAdmin ? " 120px" : "");
   const altColors = ["rgba(255,255,255,0.06)", "rgba(255,255,255,0.02)"];
-  function mkTd(isLatest: boolean, isWinner: boolean, altBg: string, extra: React.CSSProperties = {}): React.CSSProperties {
+  function mkTd(isLatest: boolean, isWinner: boolean, altBg: string, justify: React.CSSProperties["justifyContent"] = "flex-start", extra: React.CSSProperties = {}): React.CSSProperties {
     const bg = isLatest ? (isWinner ? "rgba(255,191,11,0.10)" : "rgba(255,255,255,0.06)") : altBg;
     const border = isLatest ? (isWinner ? "2px solid #ffbf0b" : "2px solid rgba(255,255,255,0.22)") : "2px solid transparent";
-    return { backgroundColor: bg, borderTop: border, borderBottom: border, padding: latPadV + " 20px", ...extra };
+    return { backgroundColor: bg, borderTop: border, borderBottom: border, padding: latPadV + " 20px", display: "flex", alignItems: "center", justifyContent: justify, ...extra };
   }
   return (
     <div style={{ position: "fixed", top: 0, left: 0, width: "100vw", height: "100vh", backgroundColor: "#111", display: "flex", flexDirection: "column", zIndex: 9999, overflow: "hidden", fontFamily: "system-ui,sans-serif" }}>
@@ -64,10 +64,14 @@ export function QuizPresentation({ quiz: initialQuiz, venueId, isAdmin }: Props)
         ) : (
           <div style={{ width: "100%" }}>
             {showRounds && (
-              <div style={{ display: "grid", gridTemplateColumns: colsRounds, padding: "0 0 10px", marginBottom: "8px", borderBottom: "1px solid rgba(255,255,255,0.08)", color: "rgba(255,255,255,0.3)", fontSize: "12px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "2px" }}>
-                <div style={{ padding: "0 20px" }}>#</div><div style={{ padding: "0 20px" }}>TÍM</div>
-                <div style={{ textAlign: "center", padding: "0 20px" }}>K1</div><div style={{ textAlign: "center", padding: "0 20px" }}>K2</div><div style={{ textAlign: "center", padding: "0 20px" }}>K3</div><div style={{ textAlign: "center", padding: "0 20px" }}>K4</div>
-                <div style={{ textAlign: "center", padding: "0 20px" }}>ROZSTREL</div><div style={{ textAlign: "right", padding: "0 20px" }}>BODY</div>
+              <div style={{ display: "grid", gridTemplateColumns: colsRounds, marginBottom: "8px", borderBottom: "1px solid rgba(255,255,255,0.08)", color: "rgba(255,255,255,0.3)", fontSize: "12px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "2px" }}>
+                <div style={{ padding: "8px 20px" }}>#</div><div style={{ padding: "8px 20px" }}>TÍM</div>
+                <div style={{ padding: "8px 20px", display: "flex", justifyContent: "center" }}>K1</div>
+                <div style={{ padding: "8px 20px", display: "flex", justifyContent: "center" }}>K2</div>
+                <div style={{ padding: "8px 20px", display: "flex", justifyContent: "center" }}>K3</div>
+                <div style={{ padding: "8px 20px", display: "flex", justifyContent: "center" }}>K4</div>
+                <div style={{ padding: "8px 20px", display: "flex", justifyContent: "center" }}>ROZSTREL</div>
+                <div style={{ padding: "8px 20px", display: "flex", justifyContent: "flex-end" }}>BODY</div>
                 {isAdmin && <div />}
               </div>
             )}
@@ -89,10 +93,10 @@ export function QuizPresentation({ quiz: initialQuiz, venueId, isAdmin }: Props)
                     const sz = latSize;
                     const altBg = altColors[idx % 2];
                     const borderSide = isLatest ? (isWinner ? "2px solid #ffbf0b" : "2px solid rgba(255,255,255,0.22)") : "2px solid transparent";
-                    const td = mkTd(isLatest, isWinner, altBg);
-                    const tdL = mkTd(isLatest, isWinner, altBg, { borderLeft: borderSide, borderTopLeftRadius: "14px", borderBottomLeftRadius: "14px" });
-                    const tdR = mkTd(isLatest, isWinner, altBg, { borderRight: borderSide, borderTopRightRadius: !isAdmin ? "14px" : "0", borderBottomRightRadius: !isAdmin ? "14px" : "0", textAlign: "right" });
-                    const tdA = mkTd(isLatest, isWinner, altBg, { borderRight: borderSide, borderTopRightRadius: "14px", borderBottomRightRadius: "14px", textAlign: "center" });
+                    const td = mkTd(isLatest, isWinner, altBg, "center");
+                    const tdL = mkTd(isLatest, isWinner, altBg, "flex-start", { borderLeft: borderSide, borderTopLeftRadius: "14px", borderBottomLeftRadius: "14px" });
+                    const tdR = mkTd(isLatest, isWinner, altBg, "flex-end", { borderRight: borderSide, borderTopRightRadius: !isAdmin ? "14px" : "0", borderBottomRightRadius: !isAdmin ? "14px" : "0" });
+                    const tdA = mkTd(isLatest, isWinner, altBg, "center", { borderRight: borderSide, borderTopRightRadius: "14px", borderBottomRightRadius: "14px" });
                     return (
                       <React.Fragment key={team.teamName}>
                         <div style={tdL}><span style={{ color: "#ffbf0b", fontWeight: 900, fontSize: sz }}>{teamPlace}.</span></div>
