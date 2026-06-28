@@ -41,9 +41,12 @@ export function QuizPresentation({ quiz: initialQuiz, venueId, isAdmin }: Props)
   const prevSize = totalTeams <= 4 ? "22px" : totalTeams <= 6 ? "18px" : "15px";
   const latPadV = totalTeams <= 2 ? "28px" : totalTeams <= 4 ? "20px" : "14px";
   const prevPadV = totalTeams <= 5 ? "12px" : "8px";
-  const colsRounds = showRounds ? "80px 1fr 110px 110px 110px 110px 120px 150px" + (isAdmin ? " 110px" : "") : "80px 1fr 150px" + (isAdmin ? " 110px" : "");
-  function mkTd(isLatest: boolean, isWinner: boolean, extra: React.CSSProperties = {}): React.CSSProperties {
-    return { backgroundColor: isLatest ? (isWinner ? "rgba(255,191,11,0.08)" : "rgba(255,255,255,0.04)") : "rgba(255,255,255,0.02)", borderTop: isLatest ? (isWinner ? "2px solid #ffbf0b" : "1px solid rgba(255,255,255,0.18)") : "1px solid rgba(255,255,255,0.05)", borderBottom: isLatest ? (isWinner ? "2px solid #ffbf0b" : "1px solid rgba(255,255,255,0.18)") : "1px solid rgba(255,255,255,0.05)", padding: latPadV + " 14px", ...extra };
+  const colsRounds = showRounds ? "80px 1fr 150px 150px 150px 150px 160px 170px" + (isAdmin ? " 120px" : "") : "80px 1fr 170px" + (isAdmin ? " 120px" : "");
+  const altColors = ["rgba(255,255,255,0.06)", "rgba(255,255,255,0.02)"];
+  function mkTd(isLatest: boolean, isWinner: boolean, altBg: string, extra: React.CSSProperties = {}): React.CSSProperties {
+    const bg = isLatest ? (isWinner ? "rgba(255,191,11,0.10)" : "rgba(255,255,255,0.06)") : altBg;
+    const border = isLatest ? (isWinner ? "2px solid #ffbf0b" : "2px solid rgba(255,255,255,0.22)") : "2px solid transparent";
+    return { backgroundColor: bg, borderTop: border, borderBottom: border, padding: latPadV + " 20px", ...extra };
   }
   return (
     <div style={{ position: "fixed", top: 0, left: 0, width: "100vw", height: "100vh", backgroundColor: "#111", display: "flex", flexDirection: "column", zIndex: 9999, overflow: "hidden", fontFamily: "system-ui,sans-serif" }}>
@@ -84,10 +87,12 @@ export function QuizPresentation({ quiz: initialQuiz, venueId, isAdmin }: Props)
                     const rozDisplay = bonus > 0 ? "+" + fmt(bonus) : (origRoz && origRoz > 0 ? "+" + origRoz : "–");
                     const teamPlace = group.place + ti;
                     const sz = latSize;
-                    const td = mkTd(isLatest, isWinner);
-                    const tdL = mkTd(isLatest, isWinner, { borderLeft: isLatest ? (isWinner ? "2px solid #ffbf0b" : "1px solid rgba(255,255,255,0.18)") : "1px solid rgba(255,255,255,0.05)", borderTopLeftRadius: "14px", borderBottomLeftRadius: "14px" });
-                    const tdR = mkTd(isLatest, isWinner, { borderRight: isLatest ? (isWinner ? "2px solid #ffbf0b" : "1px solid rgba(255,255,255,0.18)") : "1px solid rgba(255,255,255,0.05)", borderTopRightRadius: !isAdmin ? "14px" : "0", borderBottomRightRadius: !isAdmin ? "14px" : "0", textAlign: "right" });
-                    const tdA = mkTd(isLatest, isWinner, { borderRight: isLatest ? (isWinner ? "2px solid #ffbf0b" : "1px solid rgba(255,255,255,0.18)") : "1px solid rgba(255,255,255,0.05)", borderTopRightRadius: "14px", borderBottomRightRadius: "14px", textAlign: "center" });
+                    const altBg = altColors[idx % 2];
+                    const borderSide = isLatest ? (isWinner ? "2px solid #ffbf0b" : "2px solid rgba(255,255,255,0.22)") : "2px solid transparent";
+                    const td = mkTd(isLatest, isWinner, altBg);
+                    const tdL = mkTd(isLatest, isWinner, altBg, { borderLeft: borderSide, borderTopLeftRadius: "14px", borderBottomLeftRadius: "14px" });
+                    const tdR = mkTd(isLatest, isWinner, altBg, { borderRight: borderSide, borderTopRightRadius: !isAdmin ? "14px" : "0", borderBottomRightRadius: !isAdmin ? "14px" : "0", textAlign: "right" });
+                    const tdA = mkTd(isLatest, isWinner, altBg, { borderRight: borderSide, borderTopRightRadius: "14px", borderBottomRightRadius: "14px", textAlign: "center" });
                     return (
                       <React.Fragment key={team.teamName}>
                         <div style={tdL}><span style={{ color: "#ffbf0b", fontWeight: 900, fontSize: sz }}>{teamPlace}.</span></div>
