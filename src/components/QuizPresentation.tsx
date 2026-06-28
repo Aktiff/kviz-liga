@@ -95,8 +95,9 @@ export function QuizPresentation({ quiz: initialQuiz, venueId, isAdmin }: Props)
                     const borderSide = isLatest ? (isWinner ? "2px solid #ffbf0b" : "2px solid rgba(255,255,255,0.22)") : "2px solid transparent";
                     const tdC = mkTd(isLatest, isWinner, altBg, "center");
                     const tdName = mkTd(isLatest, isWinner, altBg, "flex-start");
+                    const tdScore = mkTd(isLatest, isWinner, altBg, "flex-end");
                     const tdL = mkTd(isLatest, isWinner, altBg, "flex-start", { borderLeft: borderSide, borderTopLeftRadius: "14px", borderBottomLeftRadius: "14px" });
-                    const tdR = mkTd(isLatest, isWinner, altBg, "flex-end", { borderRight: borderSide, borderTopRightRadius: !isAdmin ? "14px" : "0", borderBottomRightRadius: !isAdmin ? "14px" : "0" });
+                    const tdR = mkTd(isLatest, isWinner, altBg, "flex-end", { borderRight: borderSide, borderTopRightRadius: "14px", borderBottomRightRadius: "14px" });
                     const tdA = mkTd(isLatest, isWinner, altBg, "center", { borderRight: borderSide, borderTopRightRadius: "14px", borderBottomRightRadius: "14px" });
                     return (
                       <React.Fragment key={team.teamName}>
@@ -109,7 +110,7 @@ export function QuizPresentation({ quiz: initialQuiz, venueId, isAdmin }: Props)
                           {[0,1,2,3].map(i => <div key={i} style={tdC}><span style={{ color: "rgba(255,255,255,0.25)", fontSize: sz }}>–</span></div>)}
                           <div style={tdC}><span style={{ color: "rgba(255,255,255,0.25)", fontSize: sz }}>–</span></div>
                         </>)}
-                        <div style={isAdmin ? td : tdR}><span style={{ color: "#ffbf0b", fontWeight: 900, fontSize: sz }}>{fmt(score)}</span></div>
+                        <div style={isAdmin ? tdScore : tdR}><span style={{ color: "#ffbf0b", fontWeight: 900, fontSize: sz }}>{fmt(score)}</span></div>
                         {isAdmin && <div style={tdA}>{isLatest && isTied && <button onClick={() => giveBonus(team.teamName)} disabled={!!loading} style={{ backgroundColor: "#ffbf0b", color: "#111", border: "none", cursor: "pointer", padding: "8px 14px", borderRadius: "8px", fontWeight: 900, fontSize: "18px", opacity: loading ? 0.5 : 1 }}>{loading === team.teamName ? "…" : "+0.1"}</button>}</div>}
                       </React.Fragment>
                     );
