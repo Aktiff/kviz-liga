@@ -1,0 +1,210 @@
+{
+  "venues": [
+    {
+      "id": "73fefb63-b357-4a33-861d-6484f1a1700b",
+      "name": "Lili cafe",
+      "quizzes": [
+        {
+          "id": "6f35e786-39a4-4cd0-a3a9-e6d0e3b2206d",
+          "date": "2026-06-26",
+          "results": [
+            {
+              "teamName": "Susedia",
+              "score": 31,
+              "rounds": [
+                5,
+                10,
+                9.5,
+                6.5
+              ],
+              "rozstrel": 0
+            },
+            {
+              "teamName": "Junasovci",
+              "score": 31.5,
+              "rounds": [
+                8.5,
+                7,
+                7.5,
+                8.5
+              ],
+              "rozstrel": 0
+            },
+            {
+              "teamName": "Dvaja",
+              "score": 35.5,
+              "rounds": [
+                7,
+                11,
+                7,
+                10.5
+              ],
+              "rozstrel": 0
+            },
+            {
+              "teamName": "Noroteam",
+              "score": 37.5,
+              "rounds": [
+                8,
+                12,
+                10.5,
+                7
+              ],
+              "rozstrel": 0
+            },
+            {
+              "teamName": "Dream Team",
+              "score": 42,
+              "rounds": [
+                11,
+                13,
+                10.5,
+                7.5
+              ],
+              "rozstrel": 0
+            },
+            {
+              "teamName": "Bzdochy",
+              "score": 42.5,
+              "rounds": [
+                12,
+                10,
+                9.5,
+                11
+              ],
+              "rozstrel": 0
+            }
+          ]
+        },
+        {
+          "id": "fe98aa2b-9104-4f57-87d9-ea4456b32991",
+          "date": "2026-06-12",
+          "results": [
+            {
+              "teamName": "Susedia",
+              "score": 35.5
+            },
+            {
+              "teamName": "Dream Team",
+              "score": 41
+            },
+            {
+              "teamName": "Baťovka",
+              "score": 36.5
+            },
+            {
+              "teamName": "Bzdochy",
+              "score": 42.5
+            },
+            {
+              "teamName": "Noroteam",
+              "score": 32.5
+            }
+          ]
+        },
+        {
+          "id": "987aac68-b52e-4d25-9b38-e5a637aa3960",
+          "date": "2026-05-29",
+          "results": [
+            {
+              "teamName": "Bzdochy",
+              "score": 39.66
+            },
+            {
+              "teamName": "Dream Team",
+              "score": 33.66
+            },
+            {
+              "teamName": "Baťovka",
+              "score": 33
+            },
+            {
+              "teamName": "Juniori",
+              "score": 26.5
+            },
+            {
+              "teamName": "Noroteam",
+              "score": 22.91
+            }
+          ]
+        },
+        {
+          "id": "589f318a-50d5-4fef-ba17-db1901216058",
+          "date": "2026-05-15",
+          "results": [
+            {
+              "teamName": "Bzdochy",
+              "score": 45
+            },
+            {
+              "teamName": "Noroteam",
+              "score": 33
+            },
+            {
+              "teamName": "Baťovka",
+              "score": 33
+            },
+            {
+              "teamName": "Juniori",
+              "score": 32
+            },
+            {
+              "teamName": "Dream Team",
+              "score": 32
+            },
+            {
+              "teamName": "Susedia",
+              "score": 29
+            },
+            {
+              "teamName": "Piškoty",
+              "score": 26
+            }
+          ]
+        }
+      ],
+      "historical": {
+        "Baťovka": {
+          "points": 7,
+          "quizzes": 3
+        },
+        "Rebeli": {
+          "points": 5,
+          "quizzes": 2
+        },
+        "Dream Team": {
+          "points": 5,
+          "quizzes": 2
+        },
+        "Juniori": {
+          "points": 5,
+          "quizzes": 2
+        },
+        "Piškoty": {
+          "points": 3,
+          "quizzes": 1
+        },
+        "Zblúdilí turisti": {
+          "points": 3,
+          "quizzes": 1
+        },
+        "Mama a mozog": {
+          "points": 2,
+          "quizzes": 2
+        },
+        "Full of Surprises": {
+          "points": 1,
+          "quizzes": 1
+        },
+        "Škorpiónky": {
+          "points": 0,
+          "quizzes": 1
+        },
+        "Bzdochy": {
+          "points": 15,
+          "quizzes": 3
+        }
+      }
+    }
+  ]
+}

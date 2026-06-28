@@ -1,0 +1,2 @@
+import{readDb}from"@/lib/db";import{isAdmin}from"@/lib/auth";import{VenueList}from"@/components/VenueList";
+export default async function Home(){const db=await readDb();const admin=await isAdmin();return<div><h1 className="mb-2 text-2xl font-bold">Podniky</h1><p className="mb-6 text-white/70">Vyber podnik a uvidíš históriu kvízov a ligovú tabuľku.</p><VenueList venues={db.venues} isAdmin={admin}/></div>;}
