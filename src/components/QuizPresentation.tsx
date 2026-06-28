@@ -65,9 +65,9 @@ export function QuizPresentation({ quiz: initialQuiz, venueId, isAdmin }: Props)
           <div style={{ width: "100%" }}>
             {showRounds && (
               <div style={{ display: "grid", gridTemplateColumns: colsRounds, padding: "0 0 10px", marginBottom: "8px", borderBottom: "1px solid rgba(255,255,255,0.08)", color: "rgba(255,255,255,0.3)", fontSize: "12px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "2px" }}>
-                <div>#</div><div>TÍM</div>
-                <div style={{ textAlign: "center" }}>K1</div><div style={{ textAlign: "center" }}>K2</div><div style={{ textAlign: "center" }}>K3</div><div style={{ textAlign: "center" }}>K4</div>
-                <div style={{ textAlign: "center" }}>ROZSTREL</div><div style={{ textAlign: "right" }}>BODY</div>
+                <div style={{ padding: "0 20px" }}>#</div><div style={{ padding: "0 20px" }}>TÍM</div>
+                <div style={{ textAlign: "center", padding: "0 20px" }}>K1</div><div style={{ textAlign: "center", padding: "0 20px" }}>K2</div><div style={{ textAlign: "center", padding: "0 20px" }}>K3</div><div style={{ textAlign: "center", padding: "0 20px" }}>K4</div>
+                <div style={{ textAlign: "center", padding: "0 20px" }}>ROZSTREL</div><div style={{ textAlign: "right", padding: "0 20px" }}>BODY</div>
                 {isAdmin && <div />}
               </div>
             )}
